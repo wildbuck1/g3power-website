@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Resume_Design" data-name="Resume Design" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 510.22 137.11">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 14px;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        font-style: italic;
+      }
+
+      .cls-1, .cls-4 {
+        font-family: GeomGraphic-BoldItalic, 'Geom Graphic';
+        font-size: 62.54px;
+        font-weight: 700;
+      }
+
+      .cls-2, .cls-3 {
+        font-family: GeomGraphic-SemiBoldItalic, 'Geom Graphic';
+        font-size: 25.37px;
+        font-weight: 600;
+      }
+
+      .cls-2, .cls-4 {
+        fill: #091a59;
+      }
+
+      .cls-5 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-3 {
+        fill: #62ef80;
+      }
+
+      .cls-6 {
+        letter-spacing: 0em;
+      }
+    </style>
+  </defs>
+  <g id="Resume_1st_page" data-name="Resume 1st page">
+    <g id="Name_image_part" data-name="Name &amp;amp; image part">
+      <g>
+        <text class="cls-4" transform="translate(53.52 69.69)"><tspan x="0" y="0">G3 P</tspan><tspan class="cls-6" x="176.56" y="0">O</tspan><tspan x="230.22" y="0">WER</tspan></text>
+        <text class="cls-1" transform="translate(53.52 69.69)"><tspan x="0" y="0">G3 P</tspan><tspan class="cls-6" x="176.56" y="0">O</tspan><tspan x="230.22" y="0">WER</tspan></text>
+        <text class="cls-4" transform="translate(53.52 69.69)"><tspan x="0" y="0">G3 P</tspan><tspan class="cls-6" x="176.56" y="0">O</tspan><tspan x="230.22" y="0">WER</tspan></text>
+      </g>
+      <g>
+        <text class="cls-2" transform="translate(61.99 107.97)"><tspan x="0" y="0">P</tspan><tspan class="cls-5" x="20.5" y="0">O</tspan><tspan x="42.1" y="0">WER WITH A PURPOSE </tspan></text>
+        <text class="cls-3" transform="translate(61.99 107.97)"><tspan x="0" y="0">P</tspan><tspan class="cls-5" x="20.5" y="0">O</tspan><tspan x="42.1" y="0">WER WITH A PURPOSE </tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>
