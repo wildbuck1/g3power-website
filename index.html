@@ -1618,9 +1618,16 @@
       }
 
       const data = new FormData(form);
-      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data).toString() })
-        .then(() => { showToast(); form.reset(); })
-        .catch(() => alert('Something went wrong. Please call us directly at (209) 470-6983.'));
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString()
+      })
+        .then(res => {
+          if (res.ok) { showToast(); form.reset(); }
+          else { alert('Submission error ' + res.status + '. Please call (209) 470-6983.'); }
+        })
+        .catch(() => alert('Network error. Please call (209) 470-6983.'));
     }
 
     function showToast() {
