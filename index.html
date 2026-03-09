@@ -1624,26 +1624,32 @@
       window.addEventListener('scroll', scrubVideo, { passive: true });
     }, 2000);
 
+    let rafPending = false;
     function scrubVideo() {
-      const rect = videoSection.getBoundingClientRect();
-      const sectionHeight = videoSection.offsetHeight;
-      const viewportHeight = window.innerHeight;
-      const scrolled = -rect.top;
-      const scrollable = sectionHeight - viewportHeight;
-      const progress = Math.max(0, Math.min(1, scrolled / scrollable));
+      if (rafPending) return;
+      rafPending = true;
+      requestAnimationFrame(function() {
+        rafPending = false;
+        const rect = videoSection.getBoundingClientRect();
+        const sectionHeight = videoSection.offsetHeight;
+        const viewportHeight = window.innerHeight;
+        const scrolled = -rect.top;
+        const scrollable = sectionHeight - viewportHeight;
+        const progress = Math.max(0, Math.min(1, scrolled / scrollable));
 
-      // Scrub video frame
-      if (bgVideo.duration) {
-        bgVideo.currentTime = progress * bgVideo.duration;
-      }
-
-      // Reveal stats one by one
-      statEls.forEach((el, i) => {
-        if (progress >= statThresholds[i]) {
-          el.classList.add('visible');
-        } else {
-          el.classList.remove('visible');
+        // Scrub video frame
+        if (bgVideo.duration) {
+          bgVideo.currentTime = progress * bgVideo.duration;
         }
+
+        // Reveal stats one by one
+        statEls.forEach((el, i) => {
+          if (progress >= statThresholds[i]) {
+            el.classList.add('visible');
+          } else {
+            el.classList.remove('visible');
+          }
+        });
       });
     }
   </script>
