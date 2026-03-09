@@ -992,13 +992,25 @@
     }
 
     /* Deer */
-    .footer-deer {
-      width: min(140px, 30vw);
-      height: auto;
-      display: block;
+    /* Deer wrapper — clips to neck/antler area (top 55%) */
+    .footer-deer-wrap {
+      width: min(200px, 40vw);
+      height: min(120px, 24vw);
+      overflow: hidden;
+      flex-shrink: 0;
+      order: -1;
+      margin-right: 8px;
       animation:
         deerFloat 3.5s ease-in-out infinite,
         deerZap 7s ease-in-out infinite;
+    }
+
+    .footer-deer {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: brightness(2.5) drop-shadow(0 0 10px rgba(57,255,20,0.6));
+      transform: translateY(0);
     }
 
     @keyframes deerFloat {
@@ -1007,11 +1019,11 @@
     }
 
     @keyframes deerZap {
-      0%, 85%, 100% { filter: drop-shadow(0 0 8px rgba(57,255,20,0.4)); }
-      88%            { filter: drop-shadow(0 0 40px rgba(57,255,20,1)) brightness(2); }
-      91%            { filter: drop-shadow(0 0 12px rgba(57,255,20,0.5)); }
-      94%            { filter: drop-shadow(0 0 40px rgba(57,255,20,1)) brightness(2); }
-      97%            { filter: drop-shadow(0 0 10px rgba(57,255,20,0.4)); }
+      0%, 85%, 100% { filter: brightness(2.5) drop-shadow(0 0 10px rgba(57,255,20,0.5)); }
+      88%            { filter: brightness(5) drop-shadow(0 0 50px rgba(57,255,20,1)); }
+      91%            { filter: brightness(2.5) drop-shadow(0 0 14px rgba(57,255,20,0.5)); }
+      94%            { filter: brightness(5) drop-shadow(0 0 50px rgba(57,255,20,1)); }
+      97%            { filter: brightness(2.5) drop-shadow(0 0 10px rgba(57,255,20,0.5)); }
     }
 
     .footer-top {
@@ -1543,7 +1555,9 @@
     <div class="footer-top">
       <div class="footer-brand">
         <img src="footer-logo.svg" alt="G3 Power">
-        <img class="footer-deer" src="footer-deer.svg" alt="" aria-hidden="true">
+        <div class="footer-deer-wrap">
+          <img class="footer-deer" src="footer-deer.svg" alt="" aria-hidden="true">
+        </div>
       </div>
       <ul class="footer-links">
         <li><a href="#services">Services</a></li>
