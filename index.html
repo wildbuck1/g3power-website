@@ -47,7 +47,7 @@
       transition: opacity 0.3s;
     }
 
-    /* Type logo (G3 POWER + motto) — white bg removed via invert+screen */
+    /* Type logo SVG — paths, transparent bg, no filters needed */
     .nav-type-logo {
       position: absolute;
       left: 0;
@@ -55,8 +55,6 @@
       transform: translateY(-50%);
       height: 78%;
       width: auto;
-      filter: invert(1) hue-rotate(180deg) saturate(2) brightness(1.6) contrast(1.1);
-      mix-blend-mode: screen;
       pointer-events: none;
       z-index: 2;
     }
@@ -1134,7 +1132,7 @@
   <!-- ═══════════════════ NAVBAR ═══════════════════ -->
   <nav id="navbar">
     <img class="nav-watermark" src="watermark.png" alt="" aria-hidden="true">
-    <img class="nav-type-logo" src="type-logo-with-motto.png" alt="" aria-hidden="true">
+    <img class="nav-type-logo" src="type-logo.svg" alt="" aria-hidden="true">
     <a href="#hero" class="nav-logo" aria-label="G3 Power — Home"></a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
