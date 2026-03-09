@@ -1097,10 +1097,11 @@
       #hero { padding: 128px 24px 60px; }
       .hero-watermark { width: 110%; right: -30%; opacity: 0.04; }
 
-      .scroll-stats-row { gap: 28px; bottom: 7%; }
-      .scroll-stat-num { font-size: 30px; }
-      .scroll-stat-label { font-size: 9px; letter-spacing: 1px; }
-      #bgVideo { width: 90%; border-radius: 12px; }
+      .scroll-stats-row { gap: 16px; bottom: 4%; flex-wrap: wrap; justify-content: center; padding: 0 12px; }
+      .scroll-stat { min-width: 70px; }
+      .scroll-stat-num { font-size: 26px; }
+      .scroll-stat-label { font-size: 8px; letter-spacing: 0.5px; }
+      #bgVideo { width: 95%; border-radius: 8px; max-height: 55vh; }
 
       #services, #projects, #about, #contact { padding: 72px 24px; }
 
@@ -1609,6 +1610,11 @@
     bgVideo.addEventListener('loadedmetadata', function() {
       window.addEventListener('scroll', scrubVideo, { passive: true });
     });
+
+    // iOS fallback — attach scroll listener even if metadata never fires
+    setTimeout(function() {
+      window.addEventListener('scroll', scrubVideo, { passive: true });
+    }, 2000);
 
     function scrubVideo() {
       const rect = videoSection.getBoundingClientRect();
