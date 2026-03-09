@@ -1002,7 +1002,17 @@
       gap: 14px;
     }
 
-    .footer-brand img { height: 60px; width: auto; }
+    .footer-brand img {
+      width: min(320px, 80vw);
+      height: auto;
+      display: block;
+      animation: footerSettle 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    @keyframes footerSettle {
+      0%   { opacity: 0; transform: translateY(16px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
 
     .footer-brand-text { }
 
@@ -1618,6 +1628,20 @@
           }
         });
       });
+    }
+    // Footer logo settle animation on scroll into view
+    const footerLogo = document.querySelector('.footer-brand img');
+    if (footerLogo) {
+      footerLogo.style.animationPlayState = 'paused';
+      const footerObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            footerLogo.style.animationPlayState = 'running';
+            footerObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.3 });
+      footerObserver.observe(footerLogo);
     }
   </script>
 
