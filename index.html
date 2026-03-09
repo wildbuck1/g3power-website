@@ -1006,37 +1006,11 @@
     .footer-brand {
       display: flex;
       align-items: center;
-      gap: 20px;
-      flex: 1;
-    }
-
-    /* Deer */
-    .footer-deer {
-      width: min(100px, 20vw);
-      height: auto;
-      display: block;
-      flex-shrink: 0;
-      filter: brightness(3) drop-shadow(0 0 10px rgba(57,255,20,0.6));
-      animation:
-        deerFloat 3.5s ease-in-out infinite,
-        deerZap 7s ease-in-out infinite;
-    }
-
-    @keyframes deerFloat {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-10px); }
-    }
-
-    @keyframes deerZap {
-      0%, 85%, 100% { filter: brightness(3) drop-shadow(0 0 10px rgba(57,255,20,0.5)); }
-      88%            { filter: brightness(6) drop-shadow(0 0 50px rgba(57,255,20,1)); }
-      91%            { filter: brightness(3) drop-shadow(0 0 14px rgba(57,255,20,0.5)); }
-      94%            { filter: brightness(6) drop-shadow(0 0 50px rgba(57,255,20,1)); }
-      97%            { filter: brightness(3) drop-shadow(0 0 10px rgba(57,255,20,0.5)); }
+      justify-content: flex-start;
     }
 
     .footer-brand img {
-      width: min(360px, 85vw);
+      width: min(420px, 88vw);
       height: auto;
       display: block;
       opacity: 0;
@@ -1546,7 +1520,6 @@
     <div class="footer-top">
       <div class="footer-brand">
         <img src="footer-logo.svg" alt="G3 Power">
-        <img class="footer-deer" src="footer-deer.svg" alt="" aria-hidden="true">
       </div>
       <ul class="footer-links">
         <li><a href="#services">Services</a></li>
