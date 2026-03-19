@@ -2,11 +2,10 @@ const nodemailer = require('nodemailer');
 
 exports.handler = async (event) => {
   try {
-    const payload = JSON.parse(event.body);
-    const data = payload.data || {};
+    const params = new URLSearchParams(event.body);
 
     // Only handle gc-bid-list form
-    if (payload.form_name !== 'gc-bid-list') return { statusCode: 200 };
+    if (params.get('form-name') !== 'gc-bid-list') return { statusCode: 200 };
 
     const transporter = nodemailer.createTransport({
       host: 'smtpout.secureserver.net',
@@ -18,13 +17,13 @@ exports.handler = async (event) => {
       },
     });
 
-    const gcCompany  = data['gc-company']      || 'Your Company';
-    const gcContact  = data['gc-contact']      || '';
-    const gcEmail    = data['gc-email']        || '';
-    const gcPhone    = data['gc-phone']        || '—';
-    const projectType = data['gc-project-type'] || '—';
-    const location   = data['gc-location']     || '—';
-    const message    = data['gc-message']      || '—';
+    const gcCompany  = params.get('gc-company')      || 'Your Company';
+    const gcContact  = params.get('gc-contact')      || '';
+    const gcEmail    = params.get('gc-email')        || '';
+    const gcPhone    = params.get('gc-phone')        || '—';
+    const projectType = params.get('gc-project-type') || '—';
+    const location   = params.get('gc-location')     || '—';
+    const message    = params.get('gc-message')      || '—';
     const submittedAt = new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' });
 
     // ── 1. Auto-reply to GC ──────────────────────────────────────────
