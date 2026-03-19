@@ -6,7 +6,7 @@ exports.handler = async (event) => {
     if (params.get('form-name') !== 'gc-bid-list') return { statusCode: 200 };
 
     const transporter = nodemailer.createTransport({
-      host: 'smtpout.secureserver.net',
+      host: 'smtp.office365.com',
       port: 587,
       secure: false,
       auth: {
