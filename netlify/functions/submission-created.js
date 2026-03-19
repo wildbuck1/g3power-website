@@ -82,34 +82,6 @@ exports.handler = async (event) => {
       `,
     });
 
-    // ── 3. Log to Google Sheet ───────────────────────────────────────
-    const sheetId = process.env.LEADS_SHEET_ID;
-    if (sheetId && process.env.GOOGLE_SERVICE_ACCOUNT) {
-      const { google } = require('googleapis');
-      const auth = new google.auth.GoogleAuth({
-        credentials: JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT),
-        scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-      });
-      const sheets = google.sheets({ version: 'v4', auth });
-      await sheets.spreadsheets.values.append({
-        spreadsheetId: sheetId,
-        range: 'Leads!A:H',
-        valueInputOption: 'RAW',
-        requestBody: {
-          values: [[
-            submittedAt,
-            gcCompany,
-            gcContact,
-            gcEmail,
-            gcPhone,
-            projectType,
-            location,
-            message,
-          ]],
-        },
-      });
-    }
-
     return { statusCode: 200, body: 'OK' };
   } catch (err) {
     console.error('submission-created error:', err);
