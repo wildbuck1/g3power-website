@@ -10,7 +10,7 @@ exports.handler = async (event) => {
       port: 465,
       secure: true,
       auth: {
-        user: 'contact@g3pwr.com',
+        user: 'raul@g3pwr.com',
         pass: process.env.GODADDY_SMTP_PASS,
       },
     });
