@@ -84,7 +84,7 @@ exports.handler = async (event) => {
 
     // ── 3. Log to Google Sheet ───────────────────────────────────────
     const sheetId = process.env.LEADS_SHEET_ID;
-    if (sheetId) {
+    if (sheetId && process.env.GOOGLE_SERVICE_ACCOUNT) {
       const { google } = require('googleapis');
       const auth = new google.auth.GoogleAuth({
         credentials: JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT),
