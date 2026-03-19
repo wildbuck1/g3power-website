@@ -1,7 +1,5 @@
 {
   "name": "g3power-website",
   "version": "1.0.0",
-  "dependencies": {
-    "nodemailer": "^6.9.13"
-  }
+  "dependencies": {}
 }

@@ -1,19 +1,10 @@
-const nodemailer = require('nodemailer');
-
 exports.handler = async (event) => {
   try {
     const params = new URLSearchParams(event.body);
     if (params.get('form-name') !== 'gc-bid-list') return { statusCode: 200 };
 
-    const transporter = nodemailer.createTransport({
-      host: 'smtp.office365.com',
-      port: 587,
-      secure: false,
-      auth: {
-        user: 'raul@g3pwr.com',
-        pass: process.env.GODADDY_SMTP_PASS,
-      },
-    });
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) return { statusCode: 500, body: 'RESEND_API_KEY not set' };
 
     const gcCompany   = params.get('gc-company')       || 'Your Company';
     const gcContact   = params.get('gc-contact')       || '';
@@ -24,11 +15,17 @@ exports.handler = async (event) => {
     const message     = params.get('gc-message')       || '—';
     const submittedAt = new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' });
 
+    const send = (payload) => fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    }).then(r => r.json());
+
     // ── 1. Auto-reply to GC ──────────────────────────────────────────
     if (gcEmail) {
-      await transporter.sendMail({
-        from: '"G3 Power" <contact@g3pwr.com>',
-        to: gcEmail,
+      await send({
+        from: 'G3 Power <contact@g3pwr.com>',
+        to: [gcEmail],
         subject: `G3 Power — You're on our bid list`,
         html: `
           <div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;color:#111;">
@@ -55,9 +52,9 @@ exports.handler = async (event) => {
     }
 
     // ── 2. Notification to Raul ──────────────────────────────────────
-    await transporter.sendMail({
-      from: '"G3 Power Website" <contact@g3pwr.com>',
-      to: 'contact@g3pwr.com',
+    await send({
+      from: 'G3 Power Website <contact@g3pwr.com>',
+      to: ['raul@g3pwr.com'],
       subject: `New Bid List Request — ${gcCompany}`,
       html: `
         <div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;color:#111;">
