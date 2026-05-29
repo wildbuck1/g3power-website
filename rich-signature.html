@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>G3 Power — Install Your Email Signature</title>
+<style>
+  body{margin:0;background:#0d0d0d;color:#f4f4f4;font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:720px;margin:0 auto;padding:48px 24px 64px;}
+  h1{color:#C8A24B;font-size:26px;margin:0 0 8px;letter-spacing:.3px;}
+  .sub{font-size:14px;color:#bbb;margin:0 0 30px;line-height:1.6;}
+  .sigbox{background:#fff;border-radius:10px;padding:28px;margin-bottom:16px;}
+  .btn{display:inline-block;background:#C8A24B;color:#0d0d0d;font-weight:bold;font-size:14px;padding:12px 22px;border:none;border-radius:6px;cursor:pointer;text-decoration:none;}
+  .btn:hover{background:#d9b765;}
+  .copied{color:#7CFC00;font-size:13px;margin-left:12px;display:none;}
+  ol{font-size:14px;line-height:1.95;color:#ddd;padding-left:20px;}
+  .step-h{color:#C8A24B;font-size:16px;margin:32px 0 10px;}
+  a{color:#C8A24B;}
+  .note{font-size:13px;color:#999;line-height:1.6;margin-top:28px;border-top:1px solid #333;padding-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Your G3 Power Email Signature</h1>
+  <p class="sub">Hey Rich — here's your G3 Power signature. Copy it below and paste it into Gmail. Takes about a minute.</p>
+
+  <div class="sigbox">
+    <table id="sig" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;">
+      <tr>
+        <td style="vertical-align:middle;padding-right:18px;border-right:3px solid #C8A24B;">
+          <img src="https://g3powerinc.com/sig-logo.png" alt="G3 Power" width="120" style="display:block;">
+        </td>
+        <td style="vertical-align:middle;padding-left:18px;">
+          <div style="font-size:18px;font-weight:bold;letter-spacing:0.5px;color:#1a1a1a;">Rich Wulff</div>
+          <div style="font-size:12px;line-height:1.7;color:#333;padding-top:6px;">
+            <a href="tel:17076289038" style="color:#333;text-decoration:none;">707-628-9038</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="mailto:rich@g3pwr.com" style="color:#333;text-decoration:none;">rich@g3pwr.com</a><br>
+            <a href="https://g3powerinc.com" style="color:#C8A24B;text-decoration:none;font-weight:bold;">g3powerinc.com</a>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <button class="btn" onclick="copySig()">Copy signature</button>
+  <span class="copied" id="copied">&#10003; Copied! Now paste it into Gmail.</span>
+
+  <div class="step-h">How to install (Gmail)</div>
+  <ol>
+    <li>Open <a href="https://mail.google.com">Gmail</a> &rarr; gear icon (top right) &rarr; <strong>See all settings</strong>.</li>
+    <li>Scroll down to <strong>Signature</strong> &rarr; <strong>Create new</strong> &rarr; name it "G3".</li>
+    <li>Come back to this page and click the <strong>Copy signature</strong> button above.</li>
+    <li>Click into the Gmail signature box and paste (Ctrl&#8209;V / &#8984;V).</li>
+    <li>Under "Signature defaults," set it for new emails and replies (optional).</li>
+    <li>Scroll to the bottom &rarr; <strong>Save Changes</strong>.</li>
+  </ol>
+
+  <p class="note">This is your G3 Power signature for company email. Your rich@g3pwr.com mail forwards to your regular inbox, so there's nothing separate to check.</p>
+
+  <script>
+    function copySig(){
+      var r = document.createRange();
+      r.selectNode(document.getElementById('sig'));
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(r);
+      try { document.execCommand('copy'); } catch(e) {}
+      sel.removeAllRanges();
+      document.getElementById('copied').style.display = 'inline';
+    }
+  </script>
+</div>
+</body>
+</html>
